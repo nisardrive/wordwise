@@ -1,0 +1,195 @@
+[
+  {
+    "id": 1,
+    "word": "Aberrant",
+    "definition": "Departing from an accepted standard; abnormal or deviant",
+    "example": "The student's aberrant behavior in class concerned the teacher.",
+    "tags": [
+      "GRE",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 2,
+    "word": "Benevolent",
+    "definition": "Well-meaning and kindly; charitable",
+    "example": "The benevolent donor gave millions to local charities.",
+    "tags": [
+      "general",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 3,
+    "word": "Cogent",
+    "definition": "Clear, logical, and convincing",
+    "example": "She presented a cogent argument for increasing the budget.",
+    "tags": [
+      "GRE",
+      "business",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "difficult"
+  },
+  {
+    "id": 4,
+    "word": "Deleterious",
+    "definition": "Causing harm or damage; harmful",
+    "example": "Smoking has deleterious effects on your health.",
+    "tags": [
+      "GRE",
+      "health",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 5,
+    "word": "Eloquent",
+    "definition": "Fluent or persuasive in speaking or writing",
+    "example": "The politician gave an eloquent speech that moved the audience.",
+    "tags": [
+      "general",
+      "communication",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "mastered"
+  },
+  {
+    "id": 6,
+    "word": "Facetious",
+    "definition": "Treating serious issues with deliberately inappropriate humor",
+    "example": "His facetious comments during the meeting were not appreciated.",
+    "tags": [
+      "GRE",
+      "communication",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 7,
+    "word": "Gregarious",
+    "definition": "Fond of the company of others; sociable",
+    "example": "She's naturally gregarious and makes friends easily.",
+    "tags": [
+      "general",
+      "personality",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "mastered"
+  },
+  {
+    "id": 8,
+    "word": "Hackneyed",
+    "definition": "Lacking originality or freshness; overused",
+    "example": "The movie was full of hackneyed plot devices.",
+    "tags": [
+      "GRE",
+      "writing",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "difficult"
+  },
+  {
+    "id": 9,
+    "word": "Impeccable",
+    "definition": "In accordance with the highest standards; faultless",
+    "example": "Her impeccable manners impressed everyone at the dinner party.",
+    "tags": [
+      "general",
+      "quality",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 10,
+    "word": "Judicious",
+    "definition": "Having, showing, or done with good judgment or sense",
+    "example": "The manager made a judicious decision to postpone the project.",
+    "tags": [
+      "business",
+      "decision-making",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "mastered"
+  },
+  {
+    "id": 11,
+    "word": "Kinetic",
+    "definition": "Relating to or resulting from motion",
+    "example": "The kinetic energy of the moving car was tremendous.",
+    "tags": [
+      "science",
+      "physics",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 12,
+    "word": "Languid",
+    "definition": "Displaying or having a disinclination for physical exertion",
+    "example": "The hot weather made everyone feel languid and tired.",
+    "tags": [
+      "GRE",
+      "physical",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "difficult"
+  },
+  {
+    "id": 13,
+    "word": "Meticulous",
+    "definition": "Showing great attention to detail; very careful and precise",
+    "example": "The scientist was meticulous in recording her observations.",
+    "tags": [
+      "general",
+      "work-style",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "mastered"
+  },
+  {
+    "id": 14,
+    "word": "Nonchalant",
+    "definition": "Feeling or appearing casually calm and relaxed",
+    "example": "Despite the chaos, he remained nonchalant about the situation.",
+    "tags": [
+      "general",
+      "attitude",
+      "adjective"
+    ],
+    "difficulty": "intermediate",
+    "mastery_level": "learning"
+  },
+  {
+    "id": 15,
+    "word": "Ostentatious",
+    "definition": "Characterized by vulgar or pretentious display",
+    "example": "The ostentatious mansion was designed to impress visitors.",
+    "tags": [
+      "GRE",
+      "behavior",
+      "adjective"
+    ],
+    "difficulty": "advanced",
+    "mastery_level": "difficult"
+  }
+]
