@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabMaster - Enhanced Vocabulary Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1FB8CD">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>VocabMaster</h1>
+            <div class="header-stats">
+                <span id="total-words-header">0 words</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Words Tab -->
+            <section id="words-tab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>My Vocabulary</h2>
+                    <div class="csv-actions">
+                        <button id="import-csv-btn" class="btn btn--primary">
+                            📥 Import CSV
+                        </button>
+                        <button id="export-csv-btn" class="btn btn--outline">
+                            📤 Export CSV
+                        </button>
+                    </div>
+                    <div class="search-filter-controls">
+                        <input type="text" id="word-search" class="form-control" placeholder="Search words...">
+                        <select id="tag-filter" class="form-control">
+                            <option value="">All Tags</option>
+                        </select>
+                        <select id="mastery-filter" class="form-control">
+                            <option value="">All Levels</option>
+                            <option value="learning">Learning</option>
+                            <option value="difficult">Difficult</option>
+                            <option value="mastered">Mastered</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="words-grid" id="words-grid">
+                    <!-- Words will be populated here -->
+                </div>
+                <button class="fab" id="add-word-btn" title="Add New Word">+</button>
+            </section>
+
+            <!-- Flashcards Tab -->
+            <section id="flashcards-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Flashcards</h2>
+                    <div class="flashcard-controls">
+                        <select id="flashcard-filter" class="form-control">
+                            <option value="">All Words</option>
+                            <option value="learning">Learning</option>
+                            <option value="difficult">Difficult</option>
+                            <option value="mastered">Mastered</option>
+                        </select>
+                        <button id="shuffle-btn" class="btn btn--secondary">Shuffle</button>
+                    </div>
+                </div>
+                <div class="flashcard-container">
+                    <div class="flashcard-progress">
+                        <span id="card-position">1 / 15</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="word-display" id="card-word">Click to start</div>
+                                <div class="flip-hint">Tap to reveal definition</div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="definition-display" id="card-definition">Definition will appear here</div>
+                                <div class="example-display" id="card-example">Example sentence</div>
+                                <div class="tags-display" id="card-tags"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard-navigation">
+                        <button id="prev-card" class="btn btn--outline">Previous</button>
+                        <div class="mastery-controls">
+                            <button class="mastery-btn difficult" data-mastery="difficult">Difficult</button>
+                            <button class="mastery-btn learning" data-mastery="learning">Learning</button>
+                            <button class="mastery-btn mastered" data-mastery="mastered">Mastered</button>
+                        </div>
+                        <button id="next-card" class="btn btn--outline">Next</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Tab -->
+            <section id="quiz-tab" class="tab-content">
+                <div class="quiz-setup" id="quiz-setup">
+                    <div class="tab-header">
+                        <h2>Quiz Mode</h2>
+                    </div>
+                    <div class="quiz-config">
+                        <div class="form-group">
+                            <label class="form-label">Number of Questions:</label>
+                            <select id="quiz-count" class="form-control">
+                                <option value="10">10 Questions</option>
+                                <option value="20">20 Questions</option>
+                                <option value="50">50 Questions</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Quiz Type:</label>
+                            <select id="quiz-type" class="form-control">
+                                <option value="word-to-def">Word → Definition</option>
+                                <option value="def-to-word">Definition → Word</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Filter by Mastery:</label>
+                            <select id="quiz-mastery-filter" class="form-control">
+                                <option value="">All Words</option>
+                                <option value="learning">Learning Only</option>
+                                <option value="difficult">Difficult Only</option>
+                            </select>
+                        </div>
+                        <button id="start-quiz" class="btn btn--primary btn--full-width">Start Quiz</button>
+                    </div>
+                </div>
+
+                <div class="quiz-active hidden" id="quiz-active">
+                    <div class="quiz-progress">
+                        <span id="quiz-question-number">Question 1 of 10</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quiz-progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <div class="question-text" id="question-text">What does "aberrant" mean?</div>
+                        <div class="quiz-options" id="quiz-options">
+                            <!-- Options will be populated here -->
+                        </div>
+                    </div>
+                    <div class="quiz-feedback hidden" id="quiz-feedback">
+                        <div class="feedback-content">
+                            <div class="feedback-result" id="feedback-result">Correct!</div>
+                            <div class="feedback-explanation" id="feedback-explanation">Great job!</div>
+                        </div>
+                        <button id="next-question" class="btn btn--primary">Next Question</button>
+                    </div>
+                </div>
+
+                <div class="quiz-results hidden" id="quiz-results">
+                    <div class="results-header">
+                        <h2>Quiz Complete!</h2>
+                        <div class="final-score" id="final-score">8/10</div>
+                        <div class="score-percentage" id="score-percentage">80%</div>
+                    </div>
+                    <div class="results-breakdown">
+                        <div class="stat-item">
+                            <span class="stat-label">Correct:</span>
+                            <span class="stat-value correct" id="correct-count">8</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Incorrect:</span>
+                            <span class="stat-value incorrect" id="incorrect-count">2</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value" id="accuracy-rate">80%</span>
+                        </div>
+                    </div>
+                    <div class="results-actions">
+                        <button id="review-incorrect" class="btn btn--outline">Review Incorrect</button>
+                        <button id="new-quiz" class="btn btn--primary">New Quiz</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Tab -->
+            <section id="progress-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>Progress Dashboard</h2>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-words-stat">15</div>
+                        <div class="stat-label">Total Words</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="mastered-words-stat">4</div>
+                        <div class="stat-label">Mastered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="learning-words-stat">8</div>
+                        <div class="stat-label">Learning</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="difficult-words-stat">3</div>
+                        <div class="stat-label">Difficult</div>
+                    </div>
+                </div>
+
+                <div class="progress-charts">
+                    <div class="chart-container">
+                        <h3>Mastery Distribution</h3>
+                        <div class="mastery-chart">
+                            <div class="mastery-bar mastered" id="mastered-bar" style="width: 27%">
+                                <span>Mastered (27%)</span>
+                            </div>
+                            <div class="mastery-bar learning" id="learning-bar" style="width: 53%">
+                                <span>Learning (53%)</span>
+                            </div>
+                            <div class="mastery-bar difficult" id="difficult-bar" style="width: 20%">
+                                <span>Difficult (20%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Recent Quiz Scores</h3>
+                        <div class="quiz-history" id="quiz-history">
+                            <div class="no-quizzes">No quizzes taken yet. Start your first quiz!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-tab="words">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">Words</span>
+            </button>
+            <button class="nav-item" data-tab="flashcards">
+                <span class="nav-icon">🃏</span>
+                <span class="nav-label">Study</span>
+            </button>
+            <button class="nav-item" data-tab="quiz">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">Quiz</span>
+            </button>
+            <button class="nav-item" data-tab="progress">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Progress</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Add/Edit Word Modal -->
+    <div class="modal hidden" id="word-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Word</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="word-form">
+                    <div class="form-group">
+                        <label class="form-label">Word *</label>
+                        <input type="text" id="word-input" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Definition *</label>
+                        <textarea id="definition-input" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Example Sentence</label>
+                        <textarea id="example-input" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tags (comma-separated)</label>
+                        <input type="text" id="tags-input" class="form-control" placeholder="e.g., GRE, business, adjective">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Difficulty</label>
+                        <select id="difficulty-input" class="form-control">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mastery Level</label>
+                        <select id="mastery-input" class="form-control">
+                            <option value="learning">Learning</option>
+                            <option value="difficult">Difficult</option>
+                            <option value="mastered">Mastered</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn--outline" id="cancel-btn">Cancel</button>
+                <button type="submit" class="btn btn--primary" id="save-btn">Save Word</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSV Import Modal -->
+    <div class="modal hidden" id="csv-import-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Words from CSV</h3>
+                <button class="modal-close" id="csv-modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="csv-import-info">
+                    <p><strong>CSV Format:</strong> Word, Definition, Example, Tags</p>
+                    <p><small>Tags should be separated by semicolons (;) within the Tags column</small></p>
+                </div>
+                <input type="file" id="csv-file-input" accept=".csv" class="form-control">
+                <div class="import-progress hidden" id="import-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="import-progress-fill"></div>
+                    </div>
+                    <p id="import-status">Processing...</p>
+                </div>
+                <div class="import-results hidden" id="import-results">
+                    <div class="import-summary" id="import-summary"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn--outline" id="csv-cancel-btn">Cancel</button>
+                <button type="button" class="btn btn--primary" id="csv-import-btn" disabled>Import</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Hidden file input for CSV -->
+    <input type="file" id="hidden-csv-input" accept=".csv" style="display: none;">
+
+    <!-- Papa Parse for CSV parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
